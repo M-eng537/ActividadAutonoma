@@ -34,18 +34,89 @@
         modernas.
       </p>
 
-      <h2>Beneficios del uso del DOM</h2>
+      <h2>Relaciones entre nodos</h2>
+      <p>
+        Cuando recorremos un árbol, hablamos de <strong>padre</strong> cuando nos referimos a un nodo superior, y de <strong>hijo</strong> si hablamos de un
+        nodo inferior. En el ejemplo típico, el elemento <code>&lt;body&gt;</code> tiene cinco hijos: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+        <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code> y <code>&lt;footer&gt;</code>, que son hermanos entre sí. Además, el padre de
+        <code>&lt;li&gt;</code> es <code>&lt;ul&gt;</code>.
+      </p>
+
+      <p>El DOM proporciona funcionalidades para recorrer el árbol del documento y acceder a los nodos para crear efectos dinámicos:</p>
       <ul>
-        <li>Facilita el desarrollo de interfaces dinámicas.</li>
-        <li>Mejora la experiencia del usuario con actualizaciones en tiempo real.</li>
-        <li>Permite reutilizar código y separar lógica de presentación.</li>
+        <li><code>parentNode</code>: proporciona el nodo padre.</li>
+        <li><code>childNodes</code>: proporciona el conjunto de nodos hijos (como array).</li>
+        <li><code>firstChild</code>: accede al primer nodo hijo.</li>
+        <li><code>lastChild</code>: accede al último nodo hijo.</li>
+        <li><code>previousSibling</code>: devuelve el nodo hermano anterior.</li>
+        <li><code>nextSibling</code>: devuelve el nodo hermano siguiente.</li>
       </ul>
 
-      <h2>DOM y JavaScript</h2>
-      <p>
-        JavaScript utiliza el DOM para interactuar con las páginas web. A través del DOM, los desarrolladores pueden acceder y manipular cualquier elemento del
-        HTML, cambiar estilos, insertar nuevos elementos, eliminar secciones, responder a eventos del usuario, y mucho más.
-      </p>
+      <h2>Ejemplo de jerarquía DOM</h2>
+      <pre>
+&lt;ul&gt;
+  &lt;li id="miLI"&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  var x = document.getElementById("miLI").parentNode.nodeName;
+// x tendrá el valor "UL", el padre del nodo li
+&lt;/script&gt;
+  </pre
+      >
+
+      <h2>Acceso a elementos HTML</h2>
+      <p>Para acceder a los elementos del DOM, el objeto <code>document</code> utiliza varios métodos:</p>
+      <ul>
+        <li><code>getElementById()</code>: accede a un elemento por su atributo <code>id</code>.</li>
+        <li><code>getElementsByTagName()</code>: devuelve todos los elementos que coinciden con una etiqueta específica.</li>
+        <li><code>getElementsByName()</code>: devuelve todos los elementos con el atributo <code>name</code> especificado.</li>
+      </ul>
+
+      <h3>Ejemplo práctico:</h3>
+      <pre>
+&lt;button onclick="funcion()"&gt;Púlsame&lt;/button&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function funcion() {
+  document.getElementById("demo").innerHTML = "Hola Mundo";
+}
+&lt;/script&gt;
+  </pre
+      >
+
+      <h2>Modificación de elementos</h2>
+      <p>Podemos modificar el contenido o atributos de los elementos HTML usando:</p>
+      <ul>
+        <li><code>innerHTML</code>: cambia el contenido HTML de un elemento.</li>
+        <li><code>setAttribute(atributo, valor)</code>: modifica atributos específicos.</li>
+        <li><code>elemento.atributo = valor</code>: cambia un atributo directamente.</li>
+        <li><code>elemento.style.propiedad = estilo</code>: modifica el estilo CSS directamente.</li>
+      </ul>
+
+      <h3>Ejemplo con innerHTML:</h3>
+      <pre>
+&lt;button onclick="funcion()"&gt;Púlsame&lt;/button&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function funcion() {
+  document.getElementById("demo").innerHTML = "Hola Mundo";
+}
+&lt;/script&gt;
+  </pre
+      >
+
+      <h2>Manejadores de eventos</h2>
+      <p>Es posible agregar eventos directamente mediante JavaScript con:</p>
+      <pre>
+document.getElementById("miBoton").onclick = function() {
+  // código que se ejecuta al hacer clic
+};
+  </pre
+      >
 
       <h2>Ejemplo gráfico del DOM</h2>
       <p>La siguiente imagen muestra cómo se representa una estructura HTML básica en el DOM:</p>
